@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Watchables View Controller-->
+        <scene sceneID="Gg5-sI-ROi">
+            <objects>
+                <viewController storyboardIdentifier="watchables" id="Dxa-oi-8hy" customClass="WatchablesViewController" customModule="Traktv" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OxG-Eq-UEZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qhx-XA-hY9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bGP-Ec-C8D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6OS-Nf-wO3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JdI-pa-cEF">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3SO-Sb-Udz">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6OS-Nf-wO3" firstAttribute="leading" secondItem="bGP-Ec-C8D" secondAttribute="leading" id="62K-Sx-oVq"/>
+                            <constraint firstItem="Qhx-XA-hY9" firstAttribute="top" secondItem="6OS-Nf-wO3" secondAttribute="bottom" id="fZK-N6-laC"/>
+                            <constraint firstItem="6OS-Nf-wO3" firstAttribute="top" secondItem="OxG-Eq-UEZ" secondAttribute="bottom" id="glc-yh-D6V"/>
+                            <constraint firstAttribute="trailing" secondItem="6OS-Nf-wO3" secondAttribute="trailing" id="uf7-RE-Rmj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="6OS-Nf-wO3" id="g7n-OO-pBc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sk5-mo-Ggd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166" y="164"/>
+        </scene>
+        <!--Watchable Detail View Controller-->
+        <scene sceneID="U4K-cc-2JA">
+            <objects>
+                <viewController storyboardIdentifier="watchableDetail" id="S9O-x3-dMq" customClass="WatchableDetailViewController" customModule="Traktv" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sil-su-VAF"/>
+                        <viewControllerLayoutGuide type="bottom" id="rIT-am-EcV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MSN-4H-2d9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lf7-FB-tvQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RfY-ea-ThG" customClass="DetailsLayout" customModule="Traktv" customModuleProvider="target">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="n7V-en-fPV">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lf7-FB-tvQ" firstAttribute="leading" secondItem="MSN-4H-2d9" secondAttribute="leading" id="PM4-Ql-rnq"/>
+                            <constraint firstItem="rIT-am-EcV" firstAttribute="top" secondItem="Lf7-FB-tvQ" secondAttribute="bottom" id="aQ0-Kr-fHX"/>
+                            <constraint firstItem="Lf7-FB-tvQ" firstAttribute="top" secondItem="Sil-su-VAF" secondAttribute="bottom" id="gKO-V9-2L9"/>
+                            <constraint firstAttribute="trailing" secondItem="Lf7-FB-tvQ" secondAttribute="trailing" id="jfw-uW-FZZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Lf7-FB-tvQ" id="kl2-b6-5uW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q92-kf-xZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="970" y="163"/>
+        </scene>
+    </scenes>
+</document>
