@@ -17,9 +17,16 @@ class Show : WatchableWithDetail {
     var title:String = ""
     var id:Int = 0
     var tmdbId : Int = 0
+    
+    var fanartId : Int = 0
     var year: Int = 0
     var detail:WatchableDetail?
     required init?(json: JSON) {
+        var json = json
+        if let inner:JSON = "show" <~~ json {
+            json = inner
+        }
+        self.fanartId = "ids.tvdb" <~~ json ?? 0
         self.title = "title" <~~ json ?? ""
         self.id = "ids.trakt" <~~ json ?? 0
         self.tmdbId = "ids.tmdb" <~~ json ?? 0
@@ -40,10 +47,12 @@ class TMDBShow: WatchableDetail {
     var poster: URL?
     var backdrop: URL?
     var fanart: FanartDetail?
-    
+    var fanartId: Int = 0
     required init?(json: JSON) {
+
         self.title = "title" <~~ json ?? ""
         self.id = "id" <~~ json ?? 0
+        
         if let posterPath:String = "poster_path" <~~ json {
             poster = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
         }

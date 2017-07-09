@@ -33,9 +33,9 @@ enum WatchableType {
     var query: Observable<[Watchable]> {
         switch self {
         case .movie :
-            return DataManager.popularMovies()
+            return DataManager.movies(with: .popular)
         case .show :
-            return DataManager.popularShows()
+            return DataManager.shows(with: .popular)
         }
     }
 }

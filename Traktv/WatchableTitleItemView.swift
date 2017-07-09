@@ -20,7 +20,14 @@ class WatchableTitleItemView: UIView, ViewModelBindable, EmbeddableView {
     @IBOutlet weak var lbl_title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.img_poster.layer.shadowColor = UIColor.black.cgColor
+        self.img_poster.layer.shadowRadius = 5
+        self.img_poster.layer.shadowOpacity = 0.12
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.img_poster.layer.shadowPath = UIBezierPath(rect: self.img_poster.bounds).cgPath
     }
     func bind(to viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? WatchableTitleItemViewModel else {

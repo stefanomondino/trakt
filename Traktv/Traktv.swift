@@ -38,9 +38,22 @@ enum TraktvViewType {
     }
 }
 
+enum TraktvGroupType {
+    case popular
+    case trending
+    var name:String {
+        switch self {
+        case .popular : return "popular"
+        case .trending : return "trending"
+        }
+    }
+}
+
+
 enum Traktv {
     case oauth
-    case popular(TraktvViewType)
+    case list(type:TraktvViewType, group:TraktvGroupType)
+    
     case token(TraktvTokenType)
 
     static var redirectURI:String { return "testapp://auth" }
@@ -57,8 +70,10 @@ extension Traktv : Moya.TargetType {
             return "oauth/authorize"
         case .token:
             return "oauth/token"
-        case .popular(let type) :
-            return "\(type.plural)/popular"
+        case .list(let type, let group) :
+            return "\(type.plural)/\(group.name)"
+        
+            
         }
     }
     var method: Moya.Method {

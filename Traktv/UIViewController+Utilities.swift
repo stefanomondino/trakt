@@ -133,6 +133,7 @@ extension UIViewController {
             
             if ((self.navigationController?.viewControllers.count ?? 0) > 1) {
                 _ = self.withBackButton()
+                self.navigationItem.backBarButtonItem = nil
             }
             
         }
@@ -152,7 +153,7 @@ extension UIViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
     func withBackButton() -> UIViewController {
-        let item = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .done, target: self, action: #selector(back))
+        let item = UIBarButtonItem(image: UIImage(named: "arrow-back")?.styled(), style: .done, target: self, action: #selector(back))
         self.navigationItem.leftBarButtonItem = item
         return self
     }

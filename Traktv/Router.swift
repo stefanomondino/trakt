@@ -13,7 +13,9 @@ struct Router : RouterType {
     public static func root() -> UIViewController {
         let movies : WatchablesViewController = Storyboard.main.scene(.watchables)
         let shows : WatchablesViewController = Storyboard.main.scene(.watchables)
-        let vcs =  [movies.withViewModel(ViewModelFactory.popularMovies()).withNavigation(),
+        let home : WatchableHomeViewController = Storyboard.main.scene(.watchableHome)
+        let vcs =  [home.withViewModel(ViewModelFactory.watchableHome()).withNavigation(),
+                    movies.withViewModel(ViewModelFactory.popularMovies()).withNavigation(),
                     shows.withViewModel(ViewModelFactory.popularShows()).withNavigation()]
         let tab = UITabBarController()
         tab.setViewControllers(vcs, animated: false)

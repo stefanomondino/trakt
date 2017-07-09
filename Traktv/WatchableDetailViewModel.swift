@@ -23,7 +23,7 @@ final class WatchableDetailViewModel : ListViewModelType, ViewModelTypeSelectabl
         return nil
     }
     var sectionIdentifiers: [ListIdentifier] {
-        return [View.poster]
+        return [View.posterGallery]
     }
     lazy var selection : Action<Input,Output> = Action { input in
         switch input {
@@ -44,7 +44,7 @@ final class WatchableDetailViewModel : ListViewModelType, ViewModelTypeSelectabl
         
         let data = Observable.just(watchable).map { watchable -> ModelStructure in
             
-            return ModelStructure([WatchableTitleItemViewModel(model:watchable)],sectionModel:PosterItemViewModel(model: watchable.detail?.fanart?.backgrounds?.first?.url ?? UIImage()))
+            return ModelStructure([WatchableTitleItemViewModel(model:watchable)],sectionModel:PosterGalleryItemViewModel(model: watchable))
         
         }
         

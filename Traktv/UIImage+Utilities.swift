@@ -2,8 +2,8 @@ import UIKit
 
 extension UIImage {
     static func navbar() -> UIImage {
-        return UIImage(named:"bkg_topBar")?.resizableImage(withCapInsets: UIEdgeInsetsMake(1, 1, 1, 1), resizingMode: .stretch) ?? UIImage()
-        // return self.rectangle(ofSize: CGSize(width: 4, height: 4), color: .white).resizableImage(withCapInsets: UIEdgeInsetsMake(1, 1, 1, 1), resizingMode: .stretch)
+        //return UIImage(named:"bkg_topBar")?.resizableImage(withCapInsets: UIEdgeInsetsMake(1, 1, 1, 1), resizingMode: .stretch) ?? UIImage()
+         return self.rectangle(ofSize: CGSize(width: 4, height: 4), color: .clear).resizableImage(withCapInsets: UIEdgeInsetsMake(1, 1, 1, 1), resizingMode: .stretch)
     }
     static func rectangle(ofSize size:CGSize, color:UIColor, borderColor:UIColor? = nil , borderWidth:CGFloat = 0, cornerRadius:CGFloat = 0) -> UIImage{
         let bigRect =  CGRect(x:0, y:0, width:size.width, height:
@@ -72,6 +72,10 @@ extension UIImage {
         UIGraphicsEndImageContext();
         
         return image ?? UIImage.init();
+    }
+    
+    func styled() -> UIImage {
+        return self.tinted(.white).withRenderingMode(.alwaysOriginal)
     }
     
 }

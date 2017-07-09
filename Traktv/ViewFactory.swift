@@ -10,6 +10,7 @@ enum Storyboard : String {
 enum SceneIdentifier : String, ListIdentifier {
     case watchables = "watchables"
     case watchableDetail = "watchableDetail"
+    case watchableHome = "home"
     var name: String {
         return self.rawValue
     }
@@ -23,20 +24,25 @@ extension ListViewModelType {
 enum View : String, ListIdentifier {
     case watchable = "WatchableItemView"
     case watchableTitle = "WatchableTitleItemView"
+    case watchableGallery = "WatchableGalleryItemView"
     case poster = "PosterItemView"
+    case posterGallery = "PosterGalleryItemView"
     static func all() -> [View] {
         return [
             .watchable,
             .watchableTitle,
-            .poster
+            .watchableGallery,
+            .poster,
+            .posterGallery
         ]
+        
     }
-
+    
     var isEmbeddable: Bool { return true }
     var name: String {return self.rawValue}
     var type: String? {
         switch self {
-        case .poster : return SupplementaryViewType.poster.name
+        case .poster, .posterGallery : return SupplementaryViewType.poster.name
         default: return nil
             
         }

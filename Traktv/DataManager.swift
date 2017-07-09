@@ -2,6 +2,8 @@ import RxSwift
 import Moya
 import Gloss
 
+
+
 struct DataManager {
     
     enum ErrorType : Swift.Error {
@@ -25,11 +27,14 @@ struct DataManager {
     static let tmdb = RxMoyaProvider<TMDB>(plugins:[NetworkLoggerPlugin(cURL:true)] )
     static let fanart = RxMoyaProvider<Fanart>(plugins:[NetworkLoggerPlugin(cURL:true)] )
     
-    static func popularMovies() -> Observable<[Watchable]> {
-        return self.provider.request(.popular(.movie)).mapArray(type: Movie.self).map {$0}
+    
+    
+    
+    static func movies(with group:TraktvGroupType) -> Observable<[Watchable]> {
+        return self.provider.request(.list(type:.movie, group:group)).mapArray(type: Movie.self).map {$0}
     }
-    static func popularShows() -> Observable<[Watchable]> {
-        return self.provider.request(.popular(.show)).mapArray(type: Show.self).map {$0}
+    static func shows(with group:TraktvGroupType) -> Observable<[Watchable]> {
+        return self.provider.request(.list(type:.show, group:group)).mapArray(type: Show.self).map {$0}
     }
     
     private static var accessToken:AccessToken?
@@ -76,7 +81,7 @@ struct DataManager {
                 return self.tmdb.request(.movie(movie.tmdbId))
                     .mapObject(type: TMDBMovie.self)
                     .flatMapLatest { detail in
-                        return fanart.request(.movie(movie.tmdbId))
+                        return fanart.request(.movie(movie.fanartId))
                             .mapObject(type: FanartMovieDetail.self)
                             .map { $0 as FanartMovieDetail?}
                             .catchErrorJustReturn(nil)
@@ -99,7 +104,7 @@ struct DataManager {
                 return self.tmdb.request(.show(show.tmdbId))
                     .mapObject(type: TMDBShow.self)
                     .flatMapLatest { detail in
-                        return fanart.request(.show(show.tmdbId))
+                        return fanart.request(.show(show.fanartId))
                             .mapObject(type: FanartShowDetail.self)
                             .map { $0 as FanartShowDetail?}
                             .catchErrorJustReturn(nil)

@@ -17,14 +17,14 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKc-sW-6wN">
-                    <rect key="frame" x="20" y="0.0" width="60" height="90"/>
+                    <rect key="frame" x="20" y="0.0" width="50" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="Vz9-9P-i5L"/>
+                        <constraint firstAttribute="width" constant="50" id="Vz9-9P-i5L"/>
                         <constraint firstAttribute="width" secondItem="eKc-sW-6wN" secondAttribute="height" multiplier="50:75" id="sET-3h-qxn"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEx-FY-Ny4">
-                    <rect key="frame" x="20" y="113" width="335" height="544"/>
+                    <rect key="frame" x="20" y="98" width="335" height="559"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

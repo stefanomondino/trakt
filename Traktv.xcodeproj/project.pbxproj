@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B789BDE1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B789BDD1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift */; };
+		7B789BE11F12945100FF8F47 /* PosterGalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B789BDF1F12945100FF8F47 /* PosterGalleryItemView.swift */; };
+		7B789BE21F12945100FF8F47 /* PosterGalleryItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B789BE01F12945100FF8F47 /* PosterGalleryItemView.xib */; };
 		7BD17F478C51C7AC21F64D55 /* Pods_Traktv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABCA927FE748EDB9E622E6A /* Pods_Traktv.framework */; };
 		7BE505F71F0D77B500D2F4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE505F61F0D77B500D2F4BA /* Main.storyboard */; };
 		7BE505FF1F0D77B500D2F4BA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7BE505FE1F0D77B500D2F4BA /* Podfile */; };
@@ -53,10 +56,19 @@
 		7BE506721F113BFF00D2F4BA /* PosterItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5066F1F113BFF00D2F4BA /* PosterItemView.xib */; };
 		7BE506731F113BFF00D2F4BA /* PosterItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506701F113BFF00D2F4BA /* PosterItemViewModel.swift */; };
 		7BE506761F114A9600D2F4BA /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506751F114A9600D2F4BA /* Secrets.swift */; };
+		7BE5067A1F1206D000D2F4BA /* WatchableGalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506771F1206D000D2F4BA /* WatchableGalleryItemView.swift */; };
+		7BE5067B1F1206D000D2F4BA /* WatchableGalleryItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE506781F1206D000D2F4BA /* WatchableGalleryItemView.xib */; };
+		7BE5067C1F1206D000D2F4BA /* WatchableGalleryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506791F1206D000D2F4BA /* WatchableGalleryItemViewModel.swift */; };
+		7BE5067F1F12097F00D2F4BA /* WatchableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5067E1F12097F00D2F4BA /* WatchableCollection.swift */; };
+		7BE506831F120C0100D2F4BA /* WatchableHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506821F120C0100D2F4BA /* WatchableHomeViewController.swift */; };
+		7BE506851F120C0A00D2F4BA /* WatchableHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506841F120C0A00D2F4BA /* WatchableHomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4ABCA927FE748EDB9E622E6A /* Pods_Traktv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Traktv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B789BDD1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterGalleryItemViewModel.swift; sourceTree = "<group>"; };
+		7B789BDF1F12945100FF8F47 /* PosterGalleryItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterGalleryItemView.swift; sourceTree = "<group>"; };
+		7B789BE01F12945100FF8F47 /* PosterGalleryItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PosterGalleryItemView.xib; sourceTree = "<group>"; };
 		7BE505F31F0D77B500D2F4BA /* Traktv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traktv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE505F61F0D77B500D2F4BA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7BE505FE1F0D77B500D2F4BA /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
@@ -104,6 +116,12 @@
 		7BE5066F1F113BFF00D2F4BA /* PosterItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PosterItemView.xib; sourceTree = "<group>"; };
 		7BE506701F113BFF00D2F4BA /* PosterItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterItemViewModel.swift; sourceTree = "<group>"; };
 		7BE506751F114A9600D2F4BA /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		7BE506771F1206D000D2F4BA /* WatchableGalleryItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchableGalleryItemView.swift; sourceTree = "<group>"; };
+		7BE506781F1206D000D2F4BA /* WatchableGalleryItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchableGalleryItemView.xib; sourceTree = "<group>"; };
+		7BE506791F1206D000D2F4BA /* WatchableGalleryItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchableGalleryItemViewModel.swift; sourceTree = "<group>"; };
+		7BE5067E1F12097F00D2F4BA /* WatchableCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchableCollection.swift; sourceTree = "<group>"; };
+		7BE506821F120C0100D2F4BA /* WatchableHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchableHomeViewController.swift; sourceTree = "<group>"; };
+		7BE506841F120C0A00D2F4BA /* WatchableHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchableHomeViewModel.swift; sourceTree = "<group>"; };
 		8DE6995CB7922B403BE5D9C1 /* Pods-Traktv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Traktv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Traktv/Pods-Traktv.debug.xcconfig"; sourceTree = "<group>"; };
 		A347D4F29528E07A03A18485 /* Pods-Traktv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Traktv.release.xcconfig"; path = "Pods/Target Support Files/Pods-Traktv/Pods-Traktv.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +145,16 @@
 				A347D4F29528E07A03A18485 /* Pods-Traktv.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B789BE31F12948700FF8F47 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				7B789BDD1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift */,
+				7B789BDF1F12945100FF8F47 /* PosterGalleryItemView.swift */,
+				7B789BE01F12945100FF8F47 /* PosterGalleryItemView.xib */,
+			);
+			name = Gallery;
 			sourceTree = "<group>";
 		};
 		7BE505EA1F0D77B500D2F4BA = {
@@ -200,6 +228,7 @@
 				7BE506091F0D77B500D2F4BA /* NavigationController.swift */,
 				7BE506421F0D7B4D00D2F4BA /* WatchableList */,
 				7BE5066B1F113AF500D2F4BA /* WatchableDetail */,
+				7BE506861F120C0E00D2F4BA /* WatchableHome */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -250,6 +279,7 @@
 				7BE5064F1F1109B600D2F4BA /* Item.swift */,
 				7BE506361F0D794400D2F4BA /* Movie.swift */,
 				7BE5064D1F11099600D2F4BA /* Show.swift */,
+				7BE5067E1F12097F00D2F4BA /* WatchableCollection.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -257,9 +287,10 @@
 		7BE506531F1136E400D2F4BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7BE506741F113C0200D2F4BA /* WatchablePoster */,
 				7BE506541F1136F500D2F4BA /* Watchable */,
+				7BE506741F113C0200D2F4BA /* WatchablePoster */,
 				7BE5065B1F11372800D2F4BA /* WatchableTitle */,
+				7BE5067D1F1206D400D2F4BA /* WatchableGallery */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -297,11 +328,31 @@
 		7BE506741F113C0200D2F4BA /* WatchablePoster */ = {
 			isa = PBXGroup;
 			children = (
-				7BE5066E1F113BFF00D2F4BA /* PosterItemView.swift */,
+				7B789BE31F12948700FF8F47 /* Gallery */,
 				7BE5066F1F113BFF00D2F4BA /* PosterItemView.xib */,
+				7BE5066E1F113BFF00D2F4BA /* PosterItemView.swift */,
 				7BE506701F113BFF00D2F4BA /* PosterItemViewModel.swift */,
 			);
 			name = WatchablePoster;
+			sourceTree = "<group>";
+		};
+		7BE5067D1F1206D400D2F4BA /* WatchableGallery */ = {
+			isa = PBXGroup;
+			children = (
+				7BE506771F1206D000D2F4BA /* WatchableGalleryItemView.swift */,
+				7BE506781F1206D000D2F4BA /* WatchableGalleryItemView.xib */,
+				7BE506791F1206D000D2F4BA /* WatchableGalleryItemViewModel.swift */,
+			);
+			name = WatchableGallery;
+			sourceTree = "<group>";
+		};
+		7BE506861F120C0E00D2F4BA /* WatchableHome */ = {
+			isa = PBXGroup;
+			children = (
+				7BE506821F120C0100D2F4BA /* WatchableHomeViewController.swift */,
+				7BE506841F120C0A00D2F4BA /* WatchableHomeViewModel.swift */,
+			);
+			name = WatchableHome;
 			sourceTree = "<group>";
 		};
 		B1DE6B6C42004C24369AFD4A /* Frameworks */ = {
@@ -376,11 +427,13 @@
 			files = (
 				7BE506591F11372300D2F4BA /* WatchableTitleItemView.xib in Resources */,
 				7BE505FF1F0D77B500D2F4BA /* Podfile in Resources */,
+				7BE5067B1F1206D000D2F4BA /* WatchableGalleryItemView.xib in Resources */,
 				7BE5063E1F0D7B4A00D2F4BA /* WatchableItemView.xib in Resources */,
 				7BE5062D1F0D77B500D2F4BA /* LaunchScreen.storyboard in Resources */,
 				7BE5062A1F0D77B500D2F4BA /* Assets.xcassets in Resources */,
 				7BE506721F113BFF00D2F4BA /* PosterItemView.xib in Resources */,
 				7BE505F71F0D77B500D2F4BA /* Main.storyboard in Resources */,
+				7B789BE21F12945100FF8F47 /* PosterGalleryItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,10 +492,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B789BDE1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift in Sources */,
 				7BE5063D1F0D7B4A00D2F4BA /* WatchableItemView.swift in Sources */,
 				7BE506011F0D77B500D2F4BA /* AppDelegate.swift in Sources */,
 				7BE506131F0D77B500D2F4BA /* Router+Preview.swift in Sources */,
 				7BE506681F1138D700D2F4BA /* WatchableDetailViewController.swift in Sources */,
+				7BE5067C1F1206D000D2F4BA /* WatchableGalleryItemViewModel.swift in Sources */,
 				7BE5063F1F0D7B4A00D2F4BA /* WatchableItemViewModel.swift in Sources */,
 				7BE506481F0D86BE00D2F4BA /* TMDB.swift in Sources */,
 				7BE506711F113BFF00D2F4BA /* PosterItemView.swift in Sources */,
@@ -461,6 +516,9 @@
 				7BE506761F114A9600D2F4BA /* Secrets.swift in Sources */,
 				7BE506261F0D77B500D2F4BA /* ViewFactory.swift in Sources */,
 				7BE5061B1F0D77B500D2F4BA /* Rx+Operators.swift in Sources */,
+				7BE5067F1F12097F00D2F4BA /* WatchableCollection.swift in Sources */,
+				7BE5067A1F1206D000D2F4BA /* WatchableGalleryItemView.swift in Sources */,
+				7BE506831F120C0100D2F4BA /* WatchableHomeViewController.swift in Sources */,
 				7BE5061F1F0D77B500D2F4BA /* UIImage+Utilities.swift in Sources */,
 				7BE506441F0D7B6D00D2F4BA /* WatchablesViewController.swift in Sources */,
 				7BE5064E1F11099600D2F4BA /* Show.swift in Sources */,
@@ -469,12 +527,14 @@
 				7BE506521F111E3C00D2F4BA /* Fanart.swift in Sources */,
 				7BE506151F0D77B500D2F4BA /* Router+Safari.swift in Sources */,
 				7BE506191F0D77B500D2F4BA /* Router.swift in Sources */,
+				7BE506851F120C0A00D2F4BA /* WatchableHomeViewModel.swift in Sources */,
 				7BE506351F0D77F000D2F4BA /* Traktv.swift in Sources */,
 				7BE506411F0D7B4A00D2F4BA /* WatchablesViewModel.swift in Sources */,
 				7BE506071F0D77B500D2F4BA /* ImageDownloader.swift in Sources */,
 				7BE5066D1F113B0900D2F4BA /* WatchableDetailCollectionViewLayout.swift in Sources */,
 				7BE5060A1F0D77B500D2F4BA /* NavigationController.swift in Sources */,
 				7BE5061D1F0D77B500D2F4BA /* SeparatorLayout.swift in Sources */,
+				7B789BE11F12945100FF8F47 /* PosterGalleryItemView.swift in Sources */,
 				7BE506501F1109B600D2F4BA /* Item.swift in Sources */,
 				7BE506581F11372300D2F4BA /* WatchableTitleItemView.swift in Sources */,
 			);

@@ -14,6 +14,7 @@ protocol Watchable : Decodable, ModelType {
     var title:String { get }
     var id:Int { get }
     var tmdbId : Int { get }
+    var fanartId : Int { get }
 }
 protocol WatchableWithDetail : Watchable {
     var detail:WatchableDetail? { get set }

@@ -21,9 +21,9 @@ final class WatchableTitleItemViewModel : ItemViewModelType {
         self.title = model.title
         self.poster = DataManager.detail(of: model).flatMapLatest { detail -> ObservableImage in
             switch model {
-            case let show as Show :
-                
-                return  detail.backdrop?.getImage() ?? .just(nil)
+//            case let show as Show :
+//                
+//                return  detail.backdrop?.getImage() ?? .just(nil)
             default : return detail.poster?.getImage() ?? .just(nil)
             }
             
