@@ -40,7 +40,7 @@ enum WatchableType {
     }
 }
 
-final class WatchablesViewModel : ListViewModelType, ViewModelTypeSelectable {
+final class WatchablesViewModel : GenericViewModelType, ViewModelTypeSelectable {
     var dataHolder: ListDataHolderType = ListDataHolder()
     var type:WatchableType
     var title: String {
@@ -52,7 +52,13 @@ final class WatchablesViewModel : ListViewModelType, ViewModelTypeSelectable {
         }
         return ViewModelFactory.watchableItem(with: item)
     }
-    
+    var flowType: FlowType {
+        switch type {
+        case .show : return .backdrops
+        default : return .grid
+        }
+        
+    }
     lazy var selection:Action<Input,Output> = Action { input in
         switch input {
         case .item(let indexPath):

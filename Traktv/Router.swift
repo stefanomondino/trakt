@@ -11,9 +11,10 @@ import AVKit
 
 struct Router : RouterType {
     public static func root() -> UIViewController {
-        let movies : WatchablesViewController = Storyboard.main.scene(.watchables)
-        let shows : WatchablesViewController = Storyboard.main.scene(.watchables)
-        let home : WatchableHomeViewController = Storyboard.main.scene(.watchableHome)
+        let movies :GenericViewController = Storyboard.main.scene(.generic)
+        let shows : GenericViewController = Storyboard.main.scene(.generic)
+
+        let home : GenericViewController = Storyboard.main.scene(.generic)
         let vcs =  [home.withViewModel(ViewModelFactory.watchableHome()).withNavigation(),
                     movies.withViewModel(ViewModelFactory.popularMovies()).withNavigation(),
                     shows.withViewModel(ViewModelFactory.popularShows()).withNavigation()]
@@ -52,7 +53,7 @@ struct Router : RouterType {
             
             
         case let viewModel as WatchableDetailViewModel :
-            let destination :WatchableDetailViewController = Storyboard.main.scene(.watchableDetail)
+            let destination : GenericViewController = Storyboard.main.scene(.watchableDetail)
             return UIViewControllerRouterAction.push(source: source, destination: destination.withViewModel(viewModel))
         default:
             return EmptyRouterAction()

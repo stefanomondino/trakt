@@ -12,7 +12,7 @@ import Boomerang
 import Action
 
 
-final class WatchableDetailViewModel : ListViewModelType, ViewModelTypeSelectable, ListViewModelTypeSectionable {
+final class WatchableDetailViewModel : GenericViewModelType, ViewModelTypeSelectable, ListViewModelTypeSectionable {
     var dataHolder: ListDataHolderType = ListDataHolder()
     
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
@@ -38,7 +38,7 @@ final class WatchableDetailViewModel : ListViewModelType, ViewModelTypeSelectabl
         }
         
     }
-    
+    var title: String { return "" }
     
     convenience init(with watchable:WatchableWithDetail) {
         

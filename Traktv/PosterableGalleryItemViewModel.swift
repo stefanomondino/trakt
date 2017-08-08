@@ -13,7 +13,7 @@ import Action
 
 final class PosterableGalleryItemViewModel : ItemViewModelType, ListViewModelType, ViewModelTypeSelectable {
     var model:ItemViewModelType.Model
-    var itemIdentifier:ListIdentifier = View.watchableGallery
+    var itemIdentifier:ListIdentifier = View.posterableGallery
     var dataHolder: ListDataHolderType = ListDataHolder()
     var title:String
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {

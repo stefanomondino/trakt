@@ -31,6 +31,7 @@ protocol ShowDetail : WatchableDetail {
 }
 
 protocol Posterable : ModelType {
+    var title:String { get }
     var poster: URL? { get }
 }
 

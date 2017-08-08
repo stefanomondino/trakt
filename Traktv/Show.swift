@@ -86,29 +86,7 @@ class TMDBShow: ShowDetail {
     }
 }
 
-class Season : Decodable, Posterable {
-    static var dateFormatter : DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        return df
-    }()
-    
-    var airDate : Date?
-    var id: Int = 0
-    var episodeCount : Int = 0
-    var poster: URL?
-    var number: Int?
-    required init?(json: JSON) {
-        self.id = "id" <~~ json ?? 0
-        self.airDate = Decoder.decode(dateForKey: "last_air_date", dateFormatter: TMDBShow.dateFormatter)(json)
-        self.episodeCount = "episode_count" <~~ json ?? 0
-        if let posterPath:String = "poster_path" <~~ json {
-            poster = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
-        }
-        self.number = "season_number" <~~ json
-        
-    }
-}
+
 
 
 class FanartShowDetail : FanartDetail {

@@ -13,7 +13,7 @@ import Action
 
 
 
-final class WatchableHomeViewModel : ListViewModelType, ViewModelTypeSelectable {
+final class WatchableHomeViewModel : GenericViewModelType, ViewModelTypeSelectable {
     var dataHolder: ListDataHolderType = ListDataHolder()
     
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
@@ -26,7 +26,9 @@ final class WatchableHomeViewModel : ListViewModelType, ViewModelTypeSelectable 
         
 
     }
-    
+    var title: String {
+        return "Home".localized()
+    }
     lazy var selection:Action<Input,Output> = Action { input in
         switch input {
         case .model(let model):
@@ -49,6 +51,7 @@ final class WatchableHomeViewModel : ListViewModelType, ViewModelTypeSelectable 
     
     
     init() {
+        
         self.dataHolder = ListDataHolder(withModels: [WatchableCollection(with: .popularMovies),
                                                       WatchableCollection(with: .popularShows),
                                                        WatchableCollection(with: .trendingMovies),

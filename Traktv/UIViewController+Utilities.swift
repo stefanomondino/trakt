@@ -88,6 +88,9 @@ extension Collectionable where Self : UIViewController {
     func setupCollectionView() {
         self.collectionView.backgroundColor = .clear
     }
+    var flow:UICollectionViewFlowLayout? {
+        return self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+    }
 }
 
 extension UIViewController {
@@ -106,13 +109,15 @@ extension ViewModelBindable where Self : UIViewController {
 
 extension UIViewController {
     
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var loaderCount = "loaderCount"
         static var disposeBag = "vc_disposeBag"
+        static var flowDelegate = "vc_flowDelegate"
+        static var viewModel = "vc_viewModel"
     }
     
     public var disposeBag: DisposeBag {
-        var disposeBag: DisposeBag
+        get { var disposeBag: DisposeBag
         
         if let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag {
             disposeBag = lookup
@@ -122,8 +127,16 @@ extension UIViewController {
         }
         
         return disposeBag
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
     
+    var flowDelegate : FlowDelegate? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.flowDelegate) as? FlowDelegate }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.flowDelegate, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
     
     func setup() -> UIViewController {
         let closure = {
@@ -236,4 +249,41 @@ extension UIViewController {
         //        Router.error(error.unwrap(), from: self).execute()
     }
     
+}
+
+extension ViewModelBindable where Self : UIViewController, Self : Collectionable {
+    var viewModel : ViewModelType? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
+    private mutating func set(viewModel:ViewModelType) {
+        self.viewModel = viewModel
+    }
+    func bind(to viewModel: ViewModelType?) {
+        guard let viewModel = viewModel as? GenericViewModelType else {
+            return
+        }
+        var vc = self
+        vc.viewModel = viewModel
+        self.collectionView.bind(to:viewModel)
+        self.title = viewModel.title
+        self.flowDelegate = FlowDelegate(with: viewModel.flowType, action: viewModel.action )
+        viewModel.reload()
+        self.collectionView.delegate = self.flowDelegate
+        
+        viewModel.action?.elements.subscribe(onNext:{ selection in
+            switch selection {
+            case .viewModel(let viewModel):
+                Router.from(vc,viewModel: viewModel).execute()
+            default : break
+            }
+            
+        }).addDisposableTo(self.disposeBag)
+        
+        let refresh = UIRefreshControl()
+        refresh.rx.bind(to: viewModel.dataHolder.reloadAction, controlEvent: refresh.rx.controlEvent(.allEvents), inputTransform: {_ in return nil})
+        collectionView.addSubview(refresh)
+        viewModel.dataHolder.modelStructure.asObservable().subscribe(onNext: {_ in refresh.endRefreshing()}).disposed(by: disposeBag)
+    }
 }

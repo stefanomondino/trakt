@@ -11,6 +11,7 @@ enum SceneIdentifier : String, ListIdentifier {
     case watchables = "watchables"
     case watchableDetail = "watchableDetail"
     case watchableHome = "home"
+    case generic = "generic"
     var name: String {
         return self.rawValue
     }
@@ -24,7 +25,7 @@ extension ListViewModelType {
 enum View : String, ListIdentifier {
     case watchable = "WatchableItemView"
     case watchableTitle = "WatchableTitleItemView"
-    case watchableGallery = "WatchableGalleryItemView"
+    case posterableGallery = "PosterableGalleryItemView"
     case poster = "PosterItemView"
     case posterGallery = "PosterGalleryItemView"
     
@@ -32,7 +33,7 @@ enum View : String, ListIdentifier {
         return [
             .watchable,
             .watchableTitle,
-            .watchableGallery,
+            .posterableGallery,
             .poster,
             .posterGallery
         ]
