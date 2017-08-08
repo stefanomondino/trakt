@@ -27,6 +27,7 @@ enum View : String, ListIdentifier {
     case watchableGallery = "WatchableGalleryItemView"
     case poster = "PosterItemView"
     case posterGallery = "PosterGalleryItemView"
+    
     static func all() -> [View] {
         return [
             .watchable,

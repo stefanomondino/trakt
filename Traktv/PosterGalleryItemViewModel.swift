@@ -46,7 +46,7 @@ final class PosterGalleryItemViewModel : ItemViewModelType, ListViewModelType, V
     init(model:WatchableWithDetail) {
         self.model = model
 //        self.dataHolder = ListDataHolder(data:)
-        let data = DataManager.detail(of: model).map { detail -> ModelStructure in
+        let data = DataRepository.detail(of: model).map { detail -> ModelStructure in
             return ModelStructure(detail.fanart?.backgrounds?.flatMap { $0.url} ?? [])
         }
         self.dataHolder = ListDataHolder(data:data)

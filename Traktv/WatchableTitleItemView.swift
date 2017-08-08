@@ -16,6 +16,7 @@ class WatchableTitleItemView: UIView, ViewModelBindable, EmbeddableView {
     
     var viewModel:ItemViewModelType?
     
+    @IBOutlet weak var lbl_description: UILabel!
     @IBOutlet weak var img_poster: UIImageView!
     @IBOutlet weak var lbl_title: UILabel!
     override func awakeFromNib() {
@@ -36,6 +37,7 @@ class WatchableTitleItemView: UIView, ViewModelBindable, EmbeddableView {
         disposeBag = DisposeBag()
         self.viewModel = viewModel
         self.lbl_title.text = viewModel.title
+        self.lbl_description.text = viewModel.overview
         if (self.isPlaceholder) { return }
         viewModel.poster?.bind(to: self.img_poster.rx.image).disposed(by: disposeBag)
     }

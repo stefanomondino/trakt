@@ -7,6 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        DataRepository.dependencyContainer.register(.singleton) { APIDataManager() as DataManagerType }
         Router.start(self)
         // Override point for customization after application launch.
         let url = URL(string:"testapp://auth?code=36d7ef1177951b3240decea122646f248c94cc3539bd8e7b248c3e3a62f8c74b")!

@@ -2,16 +2,14 @@ import RxSwift
 import Moya
 import Gloss
 
-
-
-struct DataManager {
+struct APIDataManager : DataManagerType {
     
     enum ErrorType : Swift.Error {
         case genericError
     }
     
     static var loginURL : URL? {
-        return DataManager.provider.endpoint(.oauth).urlRequest?.url
+        return self.provider.endpoint(.oauth).urlRequest?.url
     }
     static let provider = RxMoyaProvider<Traktv> (endpointClosure: { (target) -> Endpoint<Traktv> in
         let endpoint = RxMoyaProvider.defaultEndpointMapping(for:target)
@@ -19,7 +17,7 @@ struct DataManager {
         return endpoint.adding(newHTTPHeaderFields: jsonify([
             "trakt-api-key" ~~> Traktv.clientID,
             "trakt-api-version" ~~> "2",
-            "Authorization" ~~> (target.shouldAuthorize ? DataManager.accessToken?.authorizationHeader : nil)
+            "Authorization" ~~> (target.shouldAuthorize ? APIDataManager.accessToken?.authorizationHeader : nil)
             ]) as? [String:String] ?? [:])
         
     },  plugins:[NetworkLoggerPlugin(cURL:true)] )
@@ -75,7 +73,7 @@ struct DataManager {
         default : return .empty()
         }
     }
-    static func detail(of movie:Movie) -> Observable<WatchableDetail> {
+    private static func detail(of movie:Movie) -> Observable<WatchableDetail> {
         return .deferred {
             guard let detail = movie.detail else {
                 return self.tmdb.request(.movie(movie.tmdbId))
@@ -98,7 +96,7 @@ struct DataManager {
             return .just(detail)
         }
     }
-    static func detail(of show:Show) -> Observable<WatchableDetail> {
+    private static func detail(of show:Show) -> Observable<WatchableDetail> {
         return .deferred {
             guard let detail = show.detail else {
                 return self.tmdb.request(.show(show.tmdbId))

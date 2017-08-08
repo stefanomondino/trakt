@@ -18,7 +18,7 @@ final class WatchableItemViewModel : ItemViewModelType {
     init(model: Watchable) {
         self.model = model
         self.title = model.title
-        self.poster = DataManager.detail(of: model).flatMapLatest { detail -> ObservableImage in
+        self.poster = DataRepository.detail(of: model).flatMapLatest { detail -> ObservableImage in
             switch model {
             case let show as Show :
                 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B10FF0C1F399C8D00A120F3 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10FF0B1F399C8D00A120F3 /* DataRepository.swift */; };
+		7B10FF101F39E4F900A120F3 /* DataManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10FF0F1F39E4F900A120F3 /* DataManagerType.swift */; };
+		7B10FF121F39F36000A120F3 /* PosterableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10FF111F39F36000A120F3 /* PosterableCollection.swift */; };
 		7B789BDE1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B789BDD1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift */; };
 		7B789BE11F12945100FF8F47 /* PosterGalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B789BDF1F12945100FF8F47 /* PosterGalleryItemView.swift */; };
 		7B789BE21F12945100FF8F47 /* PosterGalleryItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B789BE01F12945100FF8F47 /* PosterGalleryItemView.xib */; };
@@ -14,7 +17,7 @@
 		7BE505F71F0D77B500D2F4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE505F61F0D77B500D2F4BA /* Main.storyboard */; };
 		7BE505FF1F0D77B500D2F4BA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7BE505FE1F0D77B500D2F4BA /* Podfile */; };
 		7BE506011F0D77B500D2F4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506001F0D77B500D2F4BA /* AppDelegate.swift */; };
-		7BE506041F0D77B500D2F4BA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506031F0D77B500D2F4BA /* DataManager.swift */; };
+		7BE506041F0D77B500D2F4BA /* ConcreteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506031F0D77B500D2F4BA /* ConcreteDataManager.swift */; };
 		7BE506071F0D77B500D2F4BA /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506061F0D77B500D2F4BA /* ImageDownloader.swift */; };
 		7BE5060A1F0D77B500D2F4BA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE506091F0D77B500D2F4BA /* NavigationController.swift */; };
 		7BE5060C1F0D77B500D2F4BA /* Observable+Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5060B1F0D77B500D2F4BA /* Observable+Gloss.swift */; };
@@ -66,6 +69,9 @@
 
 /* Begin PBXFileReference section */
 		4ABCA927FE748EDB9E622E6A /* Pods_Traktv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Traktv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B10FF0B1F399C8D00A120F3 /* DataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		7B10FF0F1F39E4F900A120F3 /* DataManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerType.swift; sourceTree = "<group>"; };
+		7B10FF111F39F36000A120F3 /* PosterableCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterableCollection.swift; sourceTree = "<group>"; };
 		7B789BDD1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterGalleryItemViewModel.swift; sourceTree = "<group>"; };
 		7B789BDF1F12945100FF8F47 /* PosterGalleryItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterGalleryItemView.swift; sourceTree = "<group>"; };
 		7B789BE01F12945100FF8F47 /* PosterGalleryItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PosterGalleryItemView.xib; sourceTree = "<group>"; };
@@ -73,7 +79,7 @@
 		7BE505F61F0D77B500D2F4BA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7BE505FE1F0D77B500D2F4BA /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 		7BE506001F0D77B500D2F4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7BE506031F0D77B500D2F4BA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		7BE506031F0D77B500D2F4BA /* ConcreteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteDataManager.swift; sourceTree = "<group>"; };
 		7BE506061F0D77B500D2F4BA /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		7BE506091F0D77B500D2F4BA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7BE5060B1F0D77B500D2F4BA /* Observable+Gloss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Gloss.swift"; sourceTree = "<group>"; };
@@ -197,7 +203,9 @@
 		7BE506021F0D77B500D2F4BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7BE506031F0D77B500D2F4BA /* DataManager.swift */,
+				7BE506031F0D77B500D2F4BA /* ConcreteDataManager.swift */,
+				7B10FF0F1F39E4F900A120F3 /* DataManagerType.swift */,
+				7B10FF0B1F399C8D00A120F3 /* DataRepository.swift */,
 				7BE506751F114A9600D2F4BA /* Secrets.swift */,
 				7BE506451F0D86A200D2F4BA /* Providers */,
 				7BE506461F0D86AC00D2F4BA /* Models */,
@@ -280,6 +288,7 @@
 				7BE506361F0D794400D2F4BA /* Movie.swift */,
 				7BE5064D1F11099600D2F4BA /* Show.swift */,
 				7BE5067E1F12097F00D2F4BA /* WatchableCollection.swift */,
+				7B10FF111F39F36000A120F3 /* PosterableCollection.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -494,6 +503,8 @@
 			files = (
 				7B789BDE1F12937F00FF8F47 /* PosterGalleryItemViewModel.swift in Sources */,
 				7BE5063D1F0D7B4A00D2F4BA /* WatchableItemView.swift in Sources */,
+				7B10FF121F39F36000A120F3 /* PosterableCollection.swift in Sources */,
+				7B10FF101F39E4F900A120F3 /* DataManagerType.swift in Sources */,
 				7BE506011F0D77B500D2F4BA /* AppDelegate.swift in Sources */,
 				7BE506131F0D77B500D2F4BA /* Router+Preview.swift in Sources */,
 				7BE506681F1138D700D2F4BA /* WatchableDetailViewController.swift in Sources */,
@@ -507,7 +518,7 @@
 				7BE506731F113BFF00D2F4BA /* PosterItemViewModel.swift in Sources */,
 				7BE5060C1F0D77B500D2F4BA /* Observable+Gloss.swift in Sources */,
 				7BE506171F0D77B500D2F4BA /* Router+Utilities.swift in Sources */,
-				7BE506041F0D77B500D2F4BA /* DataManager.swift in Sources */,
+				7BE506041F0D77B500D2F4BA /* ConcreteDataManager.swift in Sources */,
 				7BE506281F0D77B500D2F4BA /* ViewModelFactory.swift in Sources */,
 				7BE5065A1F11372300D2F4BA /* WatchableTitleItemViewModel.swift in Sources */,
 				7BE5064A1F10D2E800D2F4BA /* Dictionary+Utilities.swift in Sources */,
@@ -521,6 +532,7 @@
 				7BE506831F120C0100D2F4BA /* WatchableHomeViewController.swift in Sources */,
 				7BE5061F1F0D77B500D2F4BA /* UIImage+Utilities.swift in Sources */,
 				7BE506441F0D7B6D00D2F4BA /* WatchablesViewController.swift in Sources */,
+				7B10FF0C1F399C8D00A120F3 /* DataRepository.swift in Sources */,
 				7BE5064E1F11099600D2F4BA /* Show.swift in Sources */,
 				7BE5060E1F0D77B500D2F4BA /* Response+Gloss.swift in Sources */,
 				7BE506211F0D77B500D2F4BA /* UIView+Utilities.swift in Sources */,

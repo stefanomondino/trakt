@@ -19,7 +19,7 @@ final class WatchableDetailViewModel : ListViewModelType, ViewModelTypeSelectabl
         guard let item = model as? WatchableDetail else {
             return model as? ItemViewModelType
         }
-//        return ViewModelFactory.__proper_factory_method_here()
+        //        return ViewModelFactory.__proper_factory_method_here()
         return nil
     }
     var sectionIdentifiers: [ListIdentifier] {
@@ -31,24 +31,48 @@ final class WatchableDetailViewModel : ListViewModelType, ViewModelTypeSelectabl
             guard let model = (self.model(atIndex:indexPath) as? WatchableDetail) else {
                 return .empty()
             }
-//            let destinationViewModel = __proper_factory_method_here__
-//            return .just(.viewModel(destinationViewModel))
+            //            let destinationViewModel = __proper_factory_method_here__
+            //            return .just(.viewModel(destinationViewModel))
             return .empty()
         default: return .empty()
         }
-
+        
     }
     
     
-    init(with watchable:WatchableWithDetail) {
+    convenience init(with watchable:WatchableWithDetail) {
         
-        let data = Observable.just(watchable).map { watchable -> ModelStructure in
+        switch watchable {
+        case let show as Show : self.init(with: show)
+        case let movie as Movie: self.init(with: movie)
+        default : self.init()
+        }
+        
+    }
+    
+    private init (with show:Show) {
+        let data = Observable.just(show).map { show -> ModelStructure in
+            guard let detail = show.detail as? ShowDetail else {
+                return ModelStructure([])
+            }
+            let header = ModelStructure([WatchableTitleItemViewModel(model:show)],sectionModel:PosterGalleryItemViewModel(model: show))
             
-            return ModelStructure([WatchableTitleItemViewModel(model:watchable)],sectionModel:PosterGalleryItemViewModel(model: watchable))
-        
+            let seasonCollection = PosterableCollection(with:detail.seasons, title: "" )
+            let seasons = ModelStructure([ViewModelFactory.posterableGalleryItem(with: seasonCollection , selection: self.selection)])
+            return ModelStructure(children: [header,seasons])
+            
         }
         
         self.dataHolder = ListDataHolder(data:data )
+    }
+    
+    private init (with movie:Movie) {
+        let data = Observable.just(movie).map { movie -> ModelStructure in
+            
+            return ModelStructure([WatchableTitleItemViewModel(model:movie)],sectionModel:PosterGalleryItemViewModel(model: movie))
+            
+        }
         
+        self.dataHolder = ListDataHolder(data:data)
     }
 }

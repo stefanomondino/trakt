@@ -18,4 +18,8 @@ final class PosterItemViewModel : ItemViewModelType {
         self.model = model
         poster = model.getImage()
     }
+    init (with posterable: Posterable) {
+        self.model = posterable
+        self.poster = posterable.poster?.getImage() ?? UIImage().getImage()
+    }
 }

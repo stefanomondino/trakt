@@ -15,11 +15,13 @@ final class WatchableTitleItemViewModel : ItemViewModelType {
     var itemIdentifier:ListIdentifier = View.watchableTitle
     
     var title:String
+    var overview : String
     var poster:ObservableImage?
-    init(model: Watchable) {
+    init(model: WatchableWithDetail) {
         self.model = model
+        self.overview = model.detail?.overview ?? ""
         self.title = model.title
-        self.poster = DataManager.detail(of: model).flatMapLatest { detail -> ObservableImage in
+        self.poster = DataRepository.detail(of: model).flatMapLatest { detail -> ObservableImage in
             switch model {
 //            case let show as Show :
 //                

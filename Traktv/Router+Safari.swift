@@ -55,8 +55,8 @@ extension SFSafariViewController : ViewModelBindable {
 }
 
 final class LoginViewModel : ViewModelTypeSelectable {
-    var url = DataManager.loginURL ?? URL(string: "https://www.google.com")!
+    var url = APIDataManager.loginURL ?? URL(string: "https://www.google.com")!
     var selection: Action<Input, Output> = Action { _ in
-        return DataManager.login().map { _ in .dismiss }
+        return DataRepository.login().map { _ in .dismiss }
     }
 }

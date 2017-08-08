@@ -24,7 +24,7 @@ class WatchableGalleryItemView: UIView, ViewModelBindable, EmbeddableView, UICol
     }
     
     func bind(to viewModel: ViewModelType?) {
-        guard let viewModel = viewModel as? WatchableGalleryItemViewModel else {
+        guard let viewModel = viewModel as? PosterableGalleryItemViewModel else {
             return
         }
         if (self.isPlaceholder) { return }
@@ -51,6 +51,6 @@ class WatchableGalleryItemView: UIView, ViewModelBindable, EmbeddableView, UICol
         return CGSize(width: h * 50/75, height: h)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        (self.viewModel as? WatchableGalleryItemViewModel)?.selection.execute(.item(indexPath))
+        (self.viewModel as? PosterableGalleryItemViewModel)?.selection.execute(.item(indexPath))
     }
 }

@@ -18,6 +18,7 @@ def shared_pods
     pod 'Moya/RxSwift'
     pod 'AlamofireImage'
     pod 'Gloss'
+    pod 'Dip'
 end
 
 target 'Traktv' do

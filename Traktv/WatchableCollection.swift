@@ -18,10 +18,10 @@ enum WatchableCollectionType {
     
     var data:Observable<[Watchable]> {
         switch self {
-        case .popularMovies : return DataManager.movies(with: .popular)
-        case .popularShows : return DataManager.shows(with:.popular)
-        case .trendingMovies : return DataManager.movies(with: .trending)
-        case .trendingShows : return DataManager.shows(with:.trending)
+        case .popularMovies : return DataRepository.movies(with: .popular)
+        case .popularShows : return DataRepository.shows(with:.popular)
+        case .trendingMovies : return DataRepository.movies(with: .trending)
+        case .trendingShows : return DataRepository.shows(with:.trending)
         }
     }
     
@@ -37,12 +37,17 @@ enum WatchableCollectionType {
     
 }
 
-class WatchableCollection: ModelType {
-    var data:Observable<[Watchable]>
+class WatchableCollection: PosterableCollection {
     var type:WatchableCollectionType
-    var title:String { return type.title }
+    override var title:String {
+            get { return type.title }
+            set { }
+    }
     init(with type:WatchableCollectionType) {
         self.type = type
-        self.data = type.data
+        super.init(with: type.data.map { $0 })
+        
+        
     }
 }
+

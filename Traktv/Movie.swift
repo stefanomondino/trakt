@@ -11,7 +11,9 @@ import Gloss
 
 
 class Movie : WatchableWithDetail {
-    
+    var poster: URL? {
+        return self.detail?.poster
+    }
     var title:String = ""
     var id:Int = 0
     var tmdbId : Int = 0
@@ -50,6 +52,7 @@ class TMDBMovie: WatchableDetail {
     var poster: URL?
     var backdrop : URL?
     var fanart: FanartDetail?
+    var overview: String = ""
     required init?(json: JSON) {
         
         
@@ -61,6 +64,7 @@ class TMDBMovie: WatchableDetail {
         if let backdropPath:String = "backdrop_path" <~~ json {
             backdrop = URL(string: "https://image.tmdb.org/t/p/w1000\(backdropPath)")
         }
+        self.overview = "overview" <~~ json ?? ""
     }
 }
 
