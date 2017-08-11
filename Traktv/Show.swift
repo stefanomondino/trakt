@@ -83,6 +83,7 @@ class TMDBShow: ShowDetail {
         self.firstAirDate = Decoder.decode(dateForKey: "last_air_date", dateFormatter: TMDBShow.dateFormatter)(json)
         
         self.seasons = "seasons" <~~ json ?? []
+        self.seasons.forEach { $0.show = self }
     }
 }
 

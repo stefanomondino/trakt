@@ -22,6 +22,9 @@ final class PosterableGalleryItemViewModel : ItemViewModelType, ListViewModelTyp
         }
         return ViewModelFactory.posterableItem(with: item)
     }
+    
+    var flowType:FlowType = FlowType.horizontal.modifying(itemsPerLine:{_ in return 1 })
+    
     var selection: Action<Input, Output> = Action {_ in .empty() }
     init(model: PosterableCollection, selection outerSelection:Action<Input,Output>) {
         self.model = model

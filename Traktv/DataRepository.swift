@@ -29,4 +29,11 @@ struct DataRepository : DataManagerType {
     static func login() -> Observable<()> {
         return dataManager.login()
     }
+    static func detail(of item: Season) -> Observable<Season> {
+        return dataManager.detail(of: item)
+    }
+    
+    static func detail(of episode:Episode) -> Observable <Episode> {
+        return dataManager.detail(of: episode)
+    }
 }

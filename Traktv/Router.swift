@@ -55,6 +55,9 @@ struct Router : RouterType {
         case let viewModel as WatchableDetailViewModel :
             let destination : GenericViewController = Storyboard.main.scene(.watchableDetail)
             return UIViewControllerRouterAction.push(source: source, destination: destination.withViewModel(viewModel))
+        case let viewModel as GenericViewModelType :
+            let destination : GenericViewController = Storyboard.main.scene(.generic)
+            return UIViewControllerRouterAction.push(source: source, destination: destination.withViewModel(viewModel))
         default:
             return EmptyRouterAction()
         }

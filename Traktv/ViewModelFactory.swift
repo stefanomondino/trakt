@@ -16,9 +16,18 @@ struct ViewModelFactory {
     static func watchableHome() -> ListViewModelType {
         return WatchableHomeViewModel()
     }
+    static func season(with season:Season) -> ViewModelType {
+        return SeasonViewModel(with: season)
+    }
+    static func episode(with episode:Episode) -> ViewModelType {
+        return EpisodeViewModel(with: episode)
+    }
     static func watchableItem(with model:Watchable) -> ItemViewModelType {
         
         return WatchableItemViewModel(model: model)
+    }
+    static func listableItem(with model: Posterable) -> ItemViewModelType {
+        return ListableItemViewModel(model: model)
     }
     static func posterableItem(with model:Posterable) -> ItemViewModelType {
         switch model {
@@ -40,7 +49,7 @@ struct ViewModelFactory {
     static func posterItem(with model:Image) -> ItemViewModelType {
         return PosterItemViewModel(model: model)
     }
-    static func posterGalleryItem(with model:Watchable) -> ItemViewModelType {
+    static func posterGalleryItem(with model:WatchableWithDetail) -> ItemViewModelType {
         return PosterGalleryItemViewModel(model: model)
     }
 }

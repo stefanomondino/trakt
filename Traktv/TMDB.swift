@@ -13,6 +13,7 @@ import Moya
 enum TMDB {
     case movie(Int)
     case show(Int)
+    case season(showId:Int, seasonNumber:Int)
 }
 
 extension TMDB : Moya.TargetType {
@@ -28,13 +29,22 @@ extension TMDB : Moya.TargetType {
             return "tv/\(id)"
         case .movie(let id) :
             return "movie/\(id)"
+        case .season(let showId, let seasonNumber) :
+            return "tv/\(showId)/season/\(seasonNumber)"
         }
     }
     var method: Moya.Method {
         return .get
     }
+    
     var parameters: [String : Any]? {
-        return ["api_key":apiKey]
+        var defaultParameters = ["api_key":apiKey]
+        switch self {
+        case .season:
+            defaultParameters["append_to_response"] = "credits"
+        default: break
+        }
+        return defaultParameters
     }
     var parameterEncoding: Moya.ParameterEncoding {
         return URLEncoding.default

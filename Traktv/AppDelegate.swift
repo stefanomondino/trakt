@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let url = URL(string:"testapp://auth?code=36d7ef1177951b3240decea122646f248c94cc3539bd8e7b248c3e3a62f8c74b")!
+        //let url = URL(string:"testapp://auth?code=36d7ef1177951b3240decea122646f248c94cc3539bd8e7b248c3e3a62f8c74b")!
         return true
     }
 

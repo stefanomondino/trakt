@@ -27,13 +27,23 @@ final class WatchableDetailViewModel : GenericViewModelType, ViewModelTypeSelect
     }
     lazy var selection : Action<Input,Output> = Action { input in
         switch input {
+            
         case .item(let indexPath):
-            guard let model = (self.model(atIndex:indexPath) as? WatchableDetail) else {
+            guard let model = (self.model(atIndex:indexPath) as? ModelType) else {
                 return .empty()
+            }
+            switch model {
+            case let model as Season : return .just(.viewModel(SeasonViewModel(with: model)))
+            default : break
             }
             //            let destinationViewModel = __proper_factory_method_here__
             //            return .just(.viewModel(destinationViewModel))
             return .empty()
+        case .model(let model) :
+            switch model {
+            case let model as Season : return .just(.viewModel(SeasonViewModel(with: model)))
+            default : return .empty()
+            }
         default: return .empty()
         }
         
@@ -49,7 +59,9 @@ final class WatchableDetailViewModel : GenericViewModelType, ViewModelTypeSelect
         }
         
     }
-    
+    init() {
+        
+    }
     private init (with show:Show) {
         let data = Observable.just(show).map { show -> ModelStructure in
             guard let detail = show.detail as? ShowDetail else {

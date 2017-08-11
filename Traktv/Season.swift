@@ -22,6 +22,8 @@ class Season : Decodable, Posterable {
     var poster: URL?
     var number: Int?
     var episodes : [Episode]?
+    var cast : [Person]?
+    weak var show:TMDBShow?
     var title: String {
         guard let number = number else { return "" }
         return "\("Season".localized()) \(number)"
@@ -35,6 +37,7 @@ class Season : Decodable, Posterable {
             poster = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
         }
         self.number = "season_number" <~~ json
+        self.cast = "credits.cast" <~~ json
         
     }
 }

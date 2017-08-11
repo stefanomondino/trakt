@@ -22,6 +22,8 @@ class Episode : Decodable, Posterable {
     var number: Int
     var title: String
     var voteAverage : Float  = 0
+    var crew : [Person]?
+    var guestStars: [Person]?
     required init?(json: JSON) {
         self.id = "id" <~~ json ?? 0
         self.title = "name" <~~ json ?? ""
@@ -30,6 +32,8 @@ class Episode : Decodable, Posterable {
         if let posterPath:String = "still_path" <~~ json {
             poster = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
         }
+        self.crew = "crew" <~~ json
+        self.guestStars = "guest_stars" <~~ json
         self.voteAverage = "vote_average" <~~ json ?? 0
     }
 }

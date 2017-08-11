@@ -8,6 +8,10 @@ struct APIDataManager : DataManagerType {
         case genericError
     }
     
+    private static var accessToken:AccessToken?
+    
+   
+    
     static var loginURL : URL? {
         return self.provider.endpoint(.oauth).urlRequest?.url
     }
@@ -25,17 +29,12 @@ struct APIDataManager : DataManagerType {
     static let tmdb = RxMoyaProvider<TMDB>(plugins:[NetworkLoggerPlugin(cURL:true)] )
     static let fanart = RxMoyaProvider<Fanart>(plugins:[NetworkLoggerPlugin(cURL:true)] )
     
-    
-    
-    
     static func movies(with group:TraktvGroupType) -> Observable<[Watchable]> {
         return self.provider.request(.list(type:.movie, group:group)).mapArray(type: Movie.self).map {$0}
     }
     static func shows(with group:TraktvGroupType) -> Observable<[Watchable]> {
         return self.provider.request(.list(type:.show, group:group)).mapArray(type: Show.self).map {$0}
     }
-    
-    private static var accessToken:AccessToken?
     
     static func login() -> Observable<()> {
         return (UIApplication.shared.delegate as? AppDelegate)?.rx
@@ -63,11 +62,10 @@ struct APIDataManager : DataManagerType {
                 
                 
             } ?? .error(ErrorType.genericError)
-        
-        
     }
-    static func detail(of item:Watchable) -> Observable<WatchableDetail> {
-        switch item {
+    
+    static func detail(of watchable:Watchable) -> Observable<WatchableDetail> {
+        switch watchable {
         case let movie as Movie : return self.detail(of: movie)
         case let show as Show : return self.detail(of: show)
         default : return .empty()
@@ -118,6 +116,19 @@ struct APIDataManager : DataManagerType {
         }
     }
     
+    static func detail(of season:Season) -> Observable<Season> {
+        return .deferred {
+           if (season.episodes == nil) {
+                return self.tmdb.request(.season(showId:season.show?.id ?? 0, seasonNumber: season.number ?? 0))
+                    .mapObject(type: Season.self)
+
+            }
+            return .just(season)
+        }
+    }
+    static func detail(of episode:Episode) -> Observable <Episode> {
+        return .just(episode)
+    }
 }
 
 private class AccessToken : Decodable {
