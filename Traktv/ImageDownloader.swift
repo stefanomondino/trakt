@@ -62,6 +62,6 @@ extension UIImage : ObservableImageType {
 }
 extension URL : ObservableImageType {
     func getImage() -> Observable<UIImage?> {
-        return ImageDownloader.download(self)
+        return ImageDownloader.download(self).catchErrorJustReturn(nil)
     }
 }

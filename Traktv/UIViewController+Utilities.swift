@@ -162,7 +162,7 @@ extension UIViewController {
     }
     
     
-    func back() {
+    @objc func back() {
         _ = self.navigationController?.popViewController(animated: true)
     }
     func withBackButton() -> UIViewController {

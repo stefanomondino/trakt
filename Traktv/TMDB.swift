@@ -17,6 +17,10 @@ enum TMDB {
 }
 
 extension TMDB : Moya.TargetType {
+    var headers: [String : String]? {
+        return nil
+    }
+    
     
    
     
@@ -54,7 +58,7 @@ extension TMDB : Moya.TargetType {
     }
     
     var task: Moya.Task {
-        return .request
+        return .requestParameters(parameters: self.parameters ?? [:], encoding: URLEncoding.methodDependent)
     }
     
     

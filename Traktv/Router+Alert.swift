@@ -12,7 +12,7 @@ extension Router {
 public static func confirm<Source:UIViewController>(title:String,message:String,confirmationTitle:String, from source:Source, action:@escaping ((Void)->())) -> RouterAction {
     let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
-    alert.addAction(UIAlertAction(title: confirmationTitle, style: .default, handler: {_ in action()}))
+
     return UIViewControllerRouterAction.modal(source: source, destination: alert, completion: nil)
 }
 

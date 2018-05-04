@@ -61,6 +61,10 @@ enum Traktv {
 }
 
 extension Traktv : Moya.TargetType {
+    var headers: [String : String]? {
+        return nil
+    }
+    
     var baseURL: URL {
         return URL(string:"https://api.trakt.tv")!
     }
@@ -112,13 +116,16 @@ extension Traktv : Moya.TargetType {
     }
     
     var task: Moya.Task {
-        return .request
+        return .requestParameters(parameters: self.parameters ?? [:], encoding: URLEncoding.methodDependent)
     }
     
     
 }
 
 extension Traktv : AccessTokenAuthorizable {
+    var authorizationType: AuthorizationType {
+        return .none
+    }
     var shouldAuthorize: Bool {
         switch self {
             default : return false

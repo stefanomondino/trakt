@@ -10,7 +10,7 @@ import Foundation
 import Boomerang
 import Gloss
 
-protocol Watchable : Decodable, ModelType, Posterable {
+protocol Watchable : JSONDecodable, Posterable {
     var title:String { get }
     var id:Int { get }
     var tmdbId : Int { get }
@@ -19,7 +19,7 @@ protocol Watchable : Decodable, ModelType, Posterable {
 protocol WatchableWithDetail : Watchable {
     var detail:WatchableDetail? { get set }
 }
-protocol WatchableDetail : Watchable, Posterable {
+protocol WatchableDetail : Watchable {
     var poster: URL? { get set }
     var backdrop : URL? { get set }
     var fanart : FanartDetail? { get set }
@@ -35,7 +35,7 @@ protocol Posterable : ModelType {
     var poster: URL? { get }
 }
 
-class FanartItem : Decodable {
+class FanartItem : JSONDecodable {
     var url:URL?
     var likes:String
     required init?(json: JSON) {
@@ -44,7 +44,7 @@ class FanartItem : Decodable {
     }
 }
 
-protocol FanartDetail : Decodable {
+protocol FanartDetail : JSONDecodable {
     var backgrounds:[FanartItem]? { get }
 }
 

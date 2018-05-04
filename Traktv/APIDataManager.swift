@@ -13,10 +13,10 @@ struct APIDataManager : DataManagerType {
    
     
     static var loginURL : URL? {
-        return self.provider.endpoint(.oauth).urlRequest?.url
+        return  (try? self.provider.endpoint(.oauth).urlRequest())?.url
     }
-    static let provider = RxMoyaProvider<Traktv> (endpointClosure: { (target) -> Endpoint<Traktv> in
-        let endpoint = RxMoyaProvider.defaultEndpointMapping(for:target)
+    static let provider = MoyaProvider<Traktv> (endpointClosure: { (target) -> Endpoint in
+        let endpoint = MoyaProvider.defaultEndpointMapping(for:target)
         
         return endpoint.adding(newHTTPHeaderFields: jsonify([
             "trakt-api-key" ~~> Traktv.clientID,
@@ -26,14 +26,16 @@ struct APIDataManager : DataManagerType {
         
     },  plugins:[NetworkLoggerPlugin(cURL:true)] )
     
-    static let tmdb = RxMoyaProvider<TMDB>(plugins:[NetworkLoggerPlugin(cURL:true)] )
-    static let fanart = RxMoyaProvider<Fanart>(plugins:[NetworkLoggerPlugin(cURL:true)] )
+    static let tmdb = MoyaProvider<TMDB>(plugins:[NetworkLoggerPlugin(cURL:true)] )
+    static let fanart = MoyaProvider<Fanart>(plugins:[NetworkLoggerPlugin(cURL:true)] )
     
     static func movies(with group:TraktvGroupType) -> Observable<[Watchable]> {
-        return self.provider.request(.list(type:.movie, group:group)).mapArray(type: Movie.self).map {$0}
+        return self.provider.rx.request(.list(type:.movie, group:group)).asObservable().mapArray(type: Movie.self).map {$0}
     }
     static func shows(with group:TraktvGroupType) -> Observable<[Watchable]> {
-        return self.provider.request(.list(type:.show, group:group)).mapArray(type: Show.self).map {$0}
+        return self.provider.rx.request(.list(type:.show, group:group))
+            .asObservable()
+            .mapArray(type: Show.self).map {$0}
     }
     
     static func login() -> Observable<()> {
@@ -49,7 +51,7 @@ struct APIDataManager : DataManagerType {
                     
                 {
                     
-                    return self.provider.request(.token(.code(code)))
+                    return self.provider.rx.request(.token(.code(code))).asObservable()
                         .mapObject(type: AccessToken.self)
                         .map { accessToken in
                             self.accessToken = accessToken
@@ -74,10 +76,10 @@ struct APIDataManager : DataManagerType {
     private static func detail(of movie:Movie) -> Observable<WatchableDetail> {
         return .deferred {
             guard let detail = movie.detail else {
-                return self.tmdb.request(.movie(movie.tmdbId))
+                return self.tmdb.rx.request(.movie(movie.tmdbId)).asObservable()
                     .mapObject(type: TMDBMovie.self)
                     .flatMapLatest { detail in
-                        return fanart.request(.movie(movie.fanartId))
+                        return fanart.rx.request(.movie(movie.fanartId)).asObservable()
                             .mapObject(type: FanartMovieDetail.self)
                             .map { $0 as FanartMovieDetail?}
                             .catchErrorJustReturn(nil)
@@ -97,10 +99,10 @@ struct APIDataManager : DataManagerType {
     private static func detail(of show:Show) -> Observable<WatchableDetail> {
         return .deferred {
             guard let detail = show.detail else {
-                return self.tmdb.request(.show(show.tmdbId))
+                return self.tmdb.rx.request(.show(show.tmdbId)).asObservable()
                     .mapObject(type: TMDBShow.self)
                     .flatMapLatest { detail in
-                        return fanart.request(.show(show.fanartId))
+                        return fanart.rx.request(.show(show.fanartId)).asObservable()
                             .mapObject(type: FanartShowDetail.self)
                             .map { $0 as FanartShowDetail?}
                             .catchErrorJustReturn(nil)
@@ -119,7 +121,7 @@ struct APIDataManager : DataManagerType {
     static func detail(of season:Season) -> Observable<Season> {
         return .deferred {
            if (season.episodes == nil) {
-                return self.tmdb.request(.season(showId:season.show?.id ?? 0, seasonNumber: season.number ?? 0))
+                return self.tmdb.rx.request(.season(showId:season.show?.id ?? 0, seasonNumber: season.number ?? 0)).asObservable()
                     .mapObject(type: Season.self)
 
             }
@@ -131,7 +133,7 @@ struct APIDataManager : DataManagerType {
     }
 }
 
-private class AccessToken : Decodable {
+private class AccessToken : JSONDecodable {
     var accessToken:String = ""
     var refreshToken:String = ""
     var scope:String?

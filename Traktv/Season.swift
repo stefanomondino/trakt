@@ -9,7 +9,7 @@
 import Foundation
 import Gloss
 
-class Season : Decodable, Posterable {
+class Season : JSONDecodable, Posterable {
     static var dateFormatter : DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"

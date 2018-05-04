@@ -4,7 +4,7 @@
 def shared_pods
     use_frameworks!
     pod 'RxSwift'
-    pod 'Boomerang', :git => "https://github.com/synesthesia-it/Boomerang.git", :branch => "v1"
+    pod 'Boomerang', :git => "https://github.com/synesthesia-it/Boomerang.git", :branch => "master"
     pod 'pop'
     pod 'BonMot'
     pod 'MBProgressHUD'
